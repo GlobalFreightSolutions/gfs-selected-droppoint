@@ -1,0 +1,16 @@
+{
+	"name": "gfs-selected-droppoint",
+	"version": "0.0.1",
+	"description": "Add a description",
+	"dependencies": {
+		"polymer": "~1.6.0"
+	},
+	"main":"gfs-selected-droppoint.html",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/GlobalFreightSolutions/gfs-selected-droppoint"
+	},
+	"ignore": [
+	],
+	"private": true
+}
