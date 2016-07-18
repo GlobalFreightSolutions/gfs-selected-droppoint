@@ -195,9 +195,18 @@
 				}
 
 			/* opening hours table style */
+			td.dp-day-time-slots {
+				line-height: 10px;
+			}
+
 			.dp-day-name, .dp-day-time-slot {
 				font-size: 13px;
 			}
+
+				.dp-day-time-slot:nth-child(2n) {
+					margin: 5px 0;
+					position: relative
+				}
 
 			.dp-small-heading {
 				margin-bottom: 0;
@@ -334,7 +343,7 @@
 								</template>
 							</table>
 
-							<div class="special-badges">
+							<!--<div class="special-badges">
 								<div class="open-late">
 									<div class="badge-text">LATE</div>
 								</div>
@@ -345,7 +354,7 @@
 									<div class="badge-text">SUN</div>
 								</div>
 								<div class="parking"></div>
-							</div>
+							</div>-->
 						</div>
 					</template>
 				</div>
