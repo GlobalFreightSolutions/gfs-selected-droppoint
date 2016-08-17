@@ -59,7 +59,7 @@
             .dp-card {
                 padding: 10px;
                 margin: 10px;
-                background-color: #FAFAFA;
+                background-color: #fff;
                 border-radius: 3px;
                 box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
                 border: 1px solid #FAFAFA;
@@ -138,7 +138,8 @@
                     background-color: #4CAF50; /* Green */
                 }
 
-            .dp-opening-hours table {
+            .dp-opening-hours {
+                width: 56%;
                 margin-top: 6px;
             }
 
@@ -189,23 +190,29 @@
                 }
 
                 .dp-card .content .dp-details {
-                    width: 45%;
+                    width: 43%;
                     margin: 0 10px 0 0;
                 }
 
             /* opening hours table style */
-            td.dp-day-time-slots {
-                line-height: 10px;
-            }
-
-            .dp-day-name, .dp-day-time-slot {
+            .dp-day-time-slots {
+                width: 77%;
                 font-size: 13px;
+                line-height: 10px;
+                display: inline-block;
             }
 
                 .dp-day-time-slot:nth-child(2n) {
                     margin: 5px 0;
-                    position: relative;
+                    position: relative
                 }
+
+            .dp-day-name {
+                width: 20%;
+                font-size: 13px;
+                font-weight: bold;
+                display: inline-block;
+            }
 
             .dp-small-heading {
                 margin-bottom: 0;
@@ -213,9 +220,21 @@
                 font-weight: bold;
             }
 
-				.dp-small-heading .fa-clock-o, .dp-small-heading .fa-road {
-					font-size: 15px
-				}
+                .dp-small-heading.opening-hours {
+                    margin: 0 0 5px;
+                }
+
+                .dp-small-heading .fa-clock-o, .dp-small-heading .fa-road {
+                    font-size: 15px
+                }
+
+                .wrap-opening-hours {
+                    height: 20px;
+                }
+
+            .multi-times {
+                line-height: 20px
+            }
 
             .dp-icon {
                 margin: 0 0 5px;
@@ -230,11 +249,11 @@
                 clear: both;
             }
 
-			#dp-address .store-name {
-				margin: 0 0 3px;
-				font-weight: bold;
-				text-transform: capitalize
-			}
+            #dp-address .store-name {
+                margin: 0 0 3px;
+                font-weight: bold;
+                text-transform: capitalize
+            }
 
 
             @media (max-width: 976px) {
@@ -270,9 +289,14 @@
                 }
             }
 
-            @media (max-width: 340px) {
+            @media (max-width: 375px) {
                 .dp-card {
                     min-width: 250px;
+                }
+            }
+
+            @media (max-width: 340px) {
+                .dp-card {
                     margin: 10px 0;
                     display: block;
                 }
@@ -301,7 +325,7 @@
             }
         </style>
 
-        <template is="dom-if" is="dom-if" if="{{_visible}}">
+        <template is="dom-if" if="{{_visible}}">
             <div class$="{{containerClass}}">
                 <template is="dom-if" if="{{title}}">
                     <h3>{{title}}</h3>
@@ -312,26 +336,26 @@
                     <div class="dp-details">
 
                         <div class="dp-icon">
-							<img src="/bower_components/gfs-selected-droppoint/images/carriers/medium/{{droppointData.providerName}}.png" width="95" />
+                            <img src="/bower_components/gfs-selected-droppoint/images/carriers/medium/{{droppointData.providerName}}.png" width="95" />
                         </div>
                         <div id="dp-address">
-							<div class="store-name">
-								{{droppointData.droppointDescription}}
-							</div>
+                            <div class="store-name">
+                                {{droppointData.droppointDescription}}
+                            </div>
                             <template is="dom-repeat" items="{{droppointData.geoLocation.addressLines}}">
-								<div class="store-address">
-									{{item}}
-								</div>
+                                <div class="store-address">
+                                    {{item}}
+                                </div>
                             </template>
 
-							<div class="store-location">
-								{{droppointData.geoLocation.town}}, {{droppointData.geoLocation.postCode}}
-							</div>
+                            <div class="store-location">
+                                {{droppointData.geoLocation.town}}, {{droppointData.geoLocation.postCode}}
+                            </div>
                         </div>
                         <template is="dom-if" if="showDistance">
                             <div class="dp-small-heading">
-								<i class="fa fa-road"></i> Distance
-							</div>
+                                <i class="fa fa-road"></i> Distance
+                            </div>
                             <div id="dp-distance">
                                 {{droppointData.localizedDistance}}
                             </div>
@@ -344,26 +368,26 @@
 
                         <div class="dp-opening-hours">
                             <div class="dp-small-heading">
-								<i class="fa fa-clock-o"></i> Opening Hours
-							</div>
-                            <table>
+                                <i class="fa fa-clock-o"></i> Opening Hours
+                            </div>
+                            <div class="weekCollection">
                                 <template is="dom-repeat" items="{{_weekCollection}}">
-                                    <tr>
-                                        <td class="dp-day-name">
-											<ul>
-												<li>{{item.day}}</li>
-											</ul>
-										</td>
-                                        <td class="dp-day-time-slots">
+                                    <div class="wrap-opening-hours">
+                                        <div class="dp-day-name">
+                                            <ul>
+                                                <li>{{item.day}}</li>
+                                            </ul>
+                                        </div>
+                                        <div class="dp-day-time-slots">
                                             <ul>
                                                 <template is="dom-repeat" items={{item.timeSlots}}>
                                                     <li class="dp-day-time-slot">{{item.fromTime}} - {{item.toTime}}</li>
                                                 </template>
                                             </ul>
-                                        </td>
-                                    </tr>
+                                        </div>
+                                    </div>
                                 </template>
-                            </table>
+                            </div>
 
                             <!--<div class="special-badges">
                                 <div class="open-late">
@@ -526,8 +550,8 @@
             },
 
             // toggleChooseDropPoint: function () {
-            // 	this.set("droppointData.chosen", !this.droppointData.chosen);
-            // 	this.chosenChanged();
+            //     this.set("droppointData.chosen", !this.droppointData.chosen);
+            //     this.chosenChanged();
             // },
 
             _getUtcTime: function (d) {
