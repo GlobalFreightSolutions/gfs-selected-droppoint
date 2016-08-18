@@ -282,8 +282,12 @@
                 }
 
                 .dp-card .content .dp-details {
-                    width: 120px;
+                    width: 30%;
                 }
+
+                    .dp-day-name {
+                        width: 10%;
+                    }
 
                 .actions {
                     clear: both;
@@ -293,11 +297,6 @@
             @media (max-width: 667px) {
                 .dp-card {
                     min-width: 286px;
-                    max-width: 286px;
-                }
-
-                .dp-card .content .dp-details {
-                    width: 95px;
                 }
 
                     .dp-opening-hours {
@@ -321,14 +320,19 @@
                     height: 295px;
                 }
 
-                    .dp-opening-hours {
-                        width: 50%;
+                    .dp-card .content .dp-details {
+                        width: 40%;
+                        font-size: 13px;
                     }
 
-                    .dp-icon img {
-                        min-width: 100%;
-                        width: 100%;
+                    .dp-opening-hours {
+                        width: 55%;
+                        float: right;
                     }
+
+                        .dp-day-name {
+                            width: 20%
+                        }
 
                     .dp-card:nth-child(2n+1) {
                         margin-right: 20px;
@@ -362,6 +366,10 @@
                     width: 85px;
                     margin: 0 5px 0 0;
                 }
+
+                    .dp-details .dp-icon img {
+                        max-width: 100%;
+                    }
 
                 .dp-opening-hours {
                     width: 57%;
