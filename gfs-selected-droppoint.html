@@ -13,7 +13,8 @@
             }
 
             ul {
-                padding-left: 2px;
+                margin: 0;
+                padding: 0;
             }
 
             li {
@@ -94,6 +95,7 @@
                 margin-top: 8px;
                 margin-bottom: 0px;
                 font-size: 0.6em;
+                text-align: left;
             }
 
             .label {
@@ -139,8 +141,9 @@
                 }
 
             .dp-opening-hours {
-                width: 59%;
+                width: 70%;
                 margin-top: 6px;
+                text-align: right;
             }
 
             div.dp-day-name {
@@ -197,7 +200,7 @@
 
             /* opening hours table style */
             .dp-day-time-slots {
-                width: 77%;
+                width: 71%;
                 font-size: 13px;
                 line-height: 10px;
                 display: inline-block;
@@ -213,6 +216,7 @@
                 font-size: 13px;
                 font-weight: bold;
                 display: inline-block;
+                vertical-align: top
             }
 
             .dp-small-heading {
@@ -229,8 +233,15 @@
                     font-size: 15px
                 }
 
+                .weekCollection {
+                    margin: 10px 0 0
+                }
+
                 .wrap-opening-hours {
-                    height: 20px;
+                    margin: 4px 0 0 0;
+                    min-height: 20px;
+                    height: auto;
+                    text-align: left;
                 }
 
             .multi-times {
@@ -404,7 +415,8 @@
                     <div class="dp-details">
 
                         <div class="dp-icon">
-                            <img src="/bower_components/gfs-selected-droppoint/images/carriers/medium/{{droppointData.providerName}}.png" width="95" />
+                            <!-- <img src="/bower_components/gfs-selected-droppoint/images/carriers/medium/{{droppointData.providerName}}.png" width="95" /> -->
+                            <img src="{{_icon}}" width="95" />
                         </div>
                         <div id="dp-address">
                             <div class="store-name">
@@ -493,7 +505,6 @@
                 title: {
                     type: String
                 },
-
                 droppointData: {
                     type: Object,
                     value: {}
@@ -529,6 +540,16 @@
                     type: String,
                     notify: true
                 },
+                providerLogo: {
+                    type: String
+                },
+                providerName: {
+                    type: String
+                },
+                _icon: {
+                    type: String,
+                    computed: "_computeIcon(providerLogo, providerName)"
+                },
                 _weekCollection: {
                     type: Object,
                     notify: true
@@ -540,7 +561,7 @@
                 _computeVisible: {
                     type: Boolean,
                     computed: 'computeVisible(droppointData)'
-                }
+                },
             },
 
             computeVisible: function (droppointData) {
@@ -568,6 +589,10 @@
                     var dayCount = 0;
                     var self = this;
                     var buildWeekCollection = [];
+
+                    self.providerName = this.droppointData.providerName;
+                    self.providerLogo = this.droppointData.geoLocation.countryCode;
+
                     this.droppointData.weekCollectionSlots = [];
                     if (!this.droppointData.collectionSlots) this.droppointData.collectionSlots = [];
 
@@ -635,7 +660,22 @@
             },
 
             _listenForChoose: function (e) {
-            }
+            },
+
+            _computeIcon: function(countryCode, providerName) {
+                var url = this.resolveUrl('/bower_components/gfs-selected-droppoint/images/carriers');
+
+                switch(countryCode) {
+                    case "DE":
+                        return url + '/DE/' + this.providerName + '.png';
+                    case "FR":
+                    case "BE":
+                    case "ES":
+                        return url + '/FR/' + this.providerName + '.png';
+                    default:
+                        return url + '/GB/' + this.providerName + '.png';
+                }
+            },
 
         });
     </script>
