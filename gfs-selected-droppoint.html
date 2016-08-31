@@ -574,7 +574,7 @@
                 var self = this;
                 this.initData();
                 window.addEventListener('droppoint-changed', this.onDroppointChanged.bind(this), false);
-
+                window.addEventListener('hide-collectionInfo', this.hideCollectionInfo.bind(this), false);
             },
 
             initData: function () {
@@ -621,13 +621,16 @@
                 }
             },
 
-
             //Global event handler
             onDroppointChanged: function (e) {
                 this.set("droppointData", e.detail);
                 this._visible = this.droppointData.chosen;
                 // this.droppointData = e.detail.droppointData;
                 this.render();
+            },
+
+            hideCollectionInfo: function() {
+                this._visible = false;
             },
 
             render: function () {
@@ -675,8 +678,7 @@
                     default:
                         return url + '/GB/' + this.providerName + '.png';
                 }
-            },
-
+            }
         });
     </script>
 </dom-module>
