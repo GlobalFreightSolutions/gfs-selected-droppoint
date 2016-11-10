@@ -45,18 +45,6 @@
                 width: 100%;
             }
 
-            .no-button button {
-                display: none;
-            }
-
-            .no-button.dp-card .actions {
-                display: none;
-            }
-
-            .no-button.dp-card {
-                /*height: 208px;*/
-            }
-
             .dp-card {
                 padding: 10px;
                 margin: 10px;
@@ -411,9 +399,7 @@
                 </template>
 
                 <div class="content">
-
                     <div class="dp-details">
-
                         <div class="dp-icon">
                             <img src="{{_icon}}" width="95" />
                         </div>
@@ -439,12 +425,9 @@
                                 {{droppointData.localizedDistance}}
                             </div>
                         </template>
-
                     </div>
 
-
                     <template is="dom-if" if="{{showOpeningHours}}">
-
                         <div class="dp-opening-hours">
                             <div class="dp-small-heading">
                                 <i class="fa fa-clock-o"></i> Opening Hours
@@ -487,13 +470,9 @@
                     type: Object,
                     value: {}
                 },
-                buttonType: {
-                    type: String,
-                    value: "standard"
-                },
                 showOpeningHours: {
                     type: Object,
-                    value: false
+                    value: true
                 },
                 showDistance: {
                     type: Object,
@@ -505,14 +484,6 @@
                 },
                 droppointId: {
                     type: String
-                },
-                buttonClass: {
-                    type: String,
-                    value: "unchosen"
-                },
-                buttonText: {
-                    type: String,
-                    value: "Choose"
                 },
                 streetAddress: {
                     type: String,
@@ -548,7 +519,6 @@
             },
 
             ready: function () {
-
                 var self = this;
                 this.initData();
                 window.addEventListener('droppoint-changed', this.onDroppointChanged.bind(this), false);
@@ -556,12 +526,13 @@
             },
 
             initData: function () {
-                //this.chosen = this.droppointData.chosen;
                 this.droppointId = this.droppointData.droppointId || "";
+
                 if (typeof (this.droppointData.chosen) === "undefined") {
                     this.droppointChosen = false;
                 }
-                if (this.droppointData.collectionSlots) { // && this.droppointData.collectionSlots) {
+
+                if (this.droppointData.collectionSlots) {
                     this.droppointData.distanceInKm = (Math.round(this.droppointData.DistanceInMeters / 100)) / 10;
 
                     var dayCount = 0;
@@ -587,7 +558,6 @@
                             });
 
                             if (collectionSlot.timeSlots.length > 0) {
-                                //self.droppointData.weekCollectionSlots.push(collectionSlot);
                                 buildWeekCollection.push(collectionSlot);
                             }
                         }
@@ -601,30 +571,12 @@
             onDroppointChanged: function (e) {
                 this.set("droppointData", e.detail);
                 this._visible = this.droppointData.chosen;
-                // this.droppointData = e.detail.droppointData;
-                this.render();
+                this.initData();
             },
 
             hideCollectionInfo: function() {
                 this._visible = false;
             },
-
-            render: function () {
-                this.initData();
-                if (this.droppointData.chosen) {
-                    this.buttonClass = "chosen";
-                    this.buttonText = "Chosen";
-                }
-                else {
-                    this.buttonClass = "unchosen";
-                    this.buttonText = "Choose";
-                }
-            },
-
-            // toggleChooseDropPoint: function () {
-            //     this.set("droppointData.chosen", !this.droppointData.chosen);
-            //     this.chosenChanged();
-            // },
 
             _getUtcTime: function (d) {
                 var utc = new Date(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate(), d.getUTCHours(), d.getUTCMinutes(), d.getUTCSeconds());
