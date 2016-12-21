@@ -543,6 +543,10 @@
             _computeIcon: function(countryCode, providerName) {
                 var url = this.resolveUrl('/bower_components/gfs-selected-droppoint/images/carriers');
 
+                if (providerName === 'DPD') {
+                    this.providerName = 'dpdpickup'
+                }
+
                 switch(countryCode) {
                     case "DE":
                         return url + '/DE/' + this.providerName + '.png';
