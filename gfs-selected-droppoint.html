@@ -1,5 +1,12 @@
 ﻿<link rel="import" href="../polymer/polymer.html" />
 
+<!--
+    `gfs-selected-droppoint`
+    A polymer widget for displaying the selected droppoint information
+
+    @demo demo/index.html
+-->
+
 <dom-module id="gfs-selected-droppoint">
 
     <template>
@@ -310,8 +317,8 @@
                 }
 
                 .dp-card .content .dp-details {
-                    width: 85px;
-                    margin: 0 5px 0 0;
+                    width: 90px;
+                    margin: 0 10px 0 0;
                 }
 
                     .dp-details .dp-icon img {
@@ -319,12 +326,15 @@
                     }
 
                 .dp-opening-hours {
-                    width: 57%;
-                    float: left;
+                    width: 52%;
                 }
 
                 .dp-day-name {
-                    width: 16%;
+                    width: 22%;
+                }
+
+                .dp-day-time-slots {
+                    width: 73%;
                 }
 
                 .dp-card-margin {
@@ -334,7 +344,7 @@
                 #dp-address, #dp-distance, .dp-small-heading,
                 .dp-day-name, .dp-day-time-slot {
                     font-size: 11px;
-                    letter-spacing: -.4px;
+                    vertical-align: inherit;
                 }
             }
         </style>
@@ -461,7 +471,6 @@
             },
 
             computeVisible: function (droppointData) {
-                console.log('computeVisible' + droppointData);
                 return (droppointData.chosen);
             },
 
