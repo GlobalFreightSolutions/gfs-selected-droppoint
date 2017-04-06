@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/GlobalFreightSolutions/gfs-selected-droppoint.svg?branch=master)](https://travis-ci.org/GlobalFreightSolutions/gfs-selected-droppoint)
+[![Build Status](https://travis-ci.org/GlobalFreightSolutions/gfs-selected-droppoint.svg?branch=develop)](https://travis-ci.org/GlobalFreightSolutions/gfs-selected-droppoint)
 
 
 # &lt;gfs-selected-droppoint&gt;
@@ -9,13 +9,24 @@ The `gfs-selected-droppoint` widget displays information on a droppoint. When us
 
 ```bash
 # via bower
-$ bower install gfs-selected-droppoint
+$ bower install --save gfs-selected-droppoint
 ```
 
 ## Usage
+
+1. Import Web Components' polyfill:
+
 ```html
-<link rel="import" href="path_to_bower_components/gfs-selected-droppoint/gfs-selected-droppoint.html" />
+<script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
 ```
+
+2. Import Custom Element:
+
+```html
+<link rel="import" href="bower_components/gfs-selected-droppoint/gfs-selected-droppoint.html">
+```
+
+3. Start using it!
 
 <!---
 ```
@@ -40,6 +51,6 @@ $ bower install gfs-selected-droppoint
 More info and all the available properties can be found at [GFS widget portal](http://gfsdeveloperportal.azurewebsites.net/info/documentation/gfs-checkout/the-gfs-checkout-widgets/selected-droppoint-widget/ "The GFS Selected Droppoint Widget")
 
 
-### License
+## License
 
-Apache License 2.0
+[Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0.html)
