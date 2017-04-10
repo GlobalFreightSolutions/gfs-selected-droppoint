@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/GlobalFreightSolutions/gfs-selected-droppoint.svg?branch=develop)](https://travis-ci.org/GlobalFreightSolutions/gfs-selected-droppoint)
+[![Build Status](https://travis-ci.org/GlobalFreightSolutions/gfs-selected-droppoint.svg?branch=master)](https://travis-ci.org/GlobalFreightSolutions/gfs-selected-droppoint)
 
 
 # &lt;gfs-selected-droppoint&gt;
@@ -48,7 +48,7 @@ $ bower install --save gfs-selected-droppoint
 </gfs-selected-droppoint>
 ```
 
-More info and all the available properties can be found at [GFS widget portal](http://gfsdeveloperportal.azurewebsites.net/info/documentation/gfs-checkout/the-gfs-checkout-widgets/selected-droppoint-widget/ "The GFS Selected Droppoint Widget")
+More info and all the available properties can be found at [GFS widget portal](http://developer.justshoutgfs.com/info/documentation/gfs-checkout/the-gfs-checkout-widgets/selected-droppoint-widget/ "The GFS Selected Droppoint Widget")
 
 
 ## License
