@@ -14,7 +14,9 @@
     ],
     "dependencies": {
         "polymer": "~1.6.0",
-        "gfs-checkout-widget": "^1.0.0"
+        "gfs-droppoint": "^1.0.0",
+        "gfs-checkout-widget": "^1.0.1",
+        "gfs-carrier-icon": "^1.0.0"
     },
     "devDependencies": {
         "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
@@ -23,7 +25,7 @@
         "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0"
     },
     "main":"gfs-selected-droppoint.html",
-    "license": "Apache 2.0",
+    "license": "Apache-2.0",
     "repository": {
         "type": "git",
         "url": "https://github.com/GlobalFreightSolutions/gfs-selected-droppoint.git"
