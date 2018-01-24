@@ -550,7 +550,7 @@
             },
 
             _computeIcon: function(countryCode, providerName) {
-                var url = this.resolveUrl('/bower_components/gfs-selected-droppoint/images/carriers');
+                var url = this.resolveUrl('./images/carriers');
 
                 if (providerName === 'DPD') {
                     this.providerName = 'dpdpickup'
@@ -558,13 +558,13 @@
 
                 switch(countryCode) {
                     case "DE":
-                        return url + '/DE/' + this.providerName + '.png';
+                        return url + '/DE/' + this.providerName.toLowerCase() + '.png';
                     case "FR":
                     case "BE":
                     case "ES":
-                        return url + '/FR/' + this.providerName + '.png';
+                        return url + '/FR/' + this.providerName.toLowerCase() + '.png';
                     default:
-                        return url + '/GB/' + this.providerName + '.png';
+                        return url + '/GB/' + this.providerName.toLowerCase() + '.png';
                 }
             }
         });
